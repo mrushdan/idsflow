@@ -4,9 +4,14 @@
 FROM node:20-bookworm-slim AS frontend-build
 WORKDIR /app/frontend
 
-# Install deps first for better layer caching
+# Install deps first for better layer caching.
+# We use `npm install` rather than `npm ci` because the Lovable-generated
+# package-lock.json is out of sync with package.json (missing transitive
+# entries for vitest's deps). `npm install` reconciles them; `npm ci` would
+# fail. We accept slightly looser version pinning in exchange for builds
+# that don't break on lockfile drift.
 COPY frontend/package.json frontend/package-lock.json ./
-RUN npm ci
+RUN npm install --no-audit --no-fund
 
 # Build
 COPY frontend/ ./
