@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: idsflow
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: OPS_CONSUMER_KEY
+        sync: false
+      - key: OPS_CONSUMER_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+    autoDeploy: true
