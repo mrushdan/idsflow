@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IDSFlow — Design System
+   Warm cream paper, near-black ink, oxblood accent.
+   No blue. No gradients. No tech colors.
+   All colors HSL.
+*/
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --paper: 42 38% 96%;            /* #faf8f3 main background */
+    --paper-warm: 42 33% 92%;       /* #f3efe4 secondary surfaces */
+    --paper-deep: 40 25% 88%;       /* deeper callout */
+
+    /* Ink */
+    --ink: 213 33% 6%;              /* #0a0e13 */
+    --ink-soft: 215 22% 13%;        /* #1a1f28 */
+    --muted-ink: 39 9% 38%;         /* #6b6558 */
+
+    /* Rules */
+    --rule: 42 18% 79%;             /* #d4cfc0 */
+    --rule-soft: 42 28% 87%;        /* #e8e3d4 */
+
+    /* Accent — oxblood */
+    --accent-red: 0 68% 32%;        /* #8b1a1a */
+    --accent-red-soft: 0 53% 43%;   /* #a63232 */
+
+    /* Semantic */
+    --forest: 90 56% 20%;           /* #2d5016 success */
+    --amber: 40 100% 27%;           /* #8a5a00 warn */
+    --highlight: 48 89% 80%;        /* #f9e79f english-family badge */
+
+    /* shadcn token mapping */
+    --background: var(--paper);
+    --foreground: var(--ink);
+
+    --card: 0 0% 100%;
+    --card-foreground: var(--ink);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--ink);
+
+    --primary: var(--accent-red);
+    --primary-foreground: 42 38% 96%;
+
+    --secondary: var(--paper-warm);
+    --secondary-foreground: var(--ink);
+
+    --muted: var(--paper-warm);
+    --muted-foreground: var(--muted-ink);
+
+    --accent: var(--paper-deep);
+    --accent-foreground: var(--ink);
+
+    --destructive: var(--accent-red);
+    --destructive-foreground: 42 38% 96%;
+
+    --border: var(--rule);
+    --input: var(--rule);
+    --ring: var(--accent-red);
+
+    --radius: 0.25rem;
+
+    /* Sidebar — match paper aesthetic */
+    --sidebar-background: 42 33% 94%;
+    --sidebar-foreground: var(--ink-soft);
+    --sidebar-primary: var(--accent-red);
+    --sidebar-primary-foreground: var(--paper);
+    --sidebar-accent: 42 28% 88%;
+    --sidebar-accent-foreground: var(--ink);
+    --sidebar-border: var(--rule);
+    --sidebar-ring: var(--accent-red);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    font-feature-settings: 'ss01';
+    letter-spacing: -0.01em;
+  }
+
+  .font-mono, code, kbd, samp {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-feature-settings: 'cv02', 'cv11';
+  }
+
+  ::selection {
+    background: hsl(var(--highlight));
+    color: hsl(var(--ink));
+  }
+}
+
+@layer components {
+  .label-mono {
+    @apply font-mono uppercase tracking-[0.14em] text-[10.5px] text-muted-foreground;
+  }
+
+  .hairline {
+    @apply border-t border-rule;
+  }
+
+  .paper-card {
+    @apply bg-card border border-rule;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .tabnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
